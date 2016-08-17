@@ -1,4 +1,6 @@
+import javax.print.DocFlavor;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Created by jeffreydorney on 8/12/16.
@@ -73,5 +75,88 @@ public class Kata {
     // HASHMAP KATAS
     //
 
-    //public static
+    public static HashMap<String, String> mapBully(HashMap<String, String> data) {
+
+        // created new hashmap in mapBully method to assign values
+        HashMap<String, String> newData = new HashMap<>();
+
+        // assigns all the data from 'data' into 'newData' (thx ggl)
+        newData.putAll(data);
+
+        // hashmap b takes value from hashmap a
+        newData.put("b", newData.get("a"));
+
+        // enters null value for a after it is "taken"
+        newData.put("a", "");
+
+        // returns the new hashmap
+        return newData;
+    }
+
+    public static HashMap<String, String> mapShare(HashMap<String, String> data) {
+
+        // created new hashmap newData to hold the newData (smHASHing idea!)
+        HashMap<String, String> newData = new HashMap<>();
+        newData.putAll(data);
+
+        // checks for value C and removes if present
+        if(newData.containsKey("c")) {
+            newData.remove("c");
+        }
+
+        // checks for value A and assigns to B if present
+        if(newData.containsKey("a")) {
+            newData.put("b", newData.get("a"));
+            return newData;
+
+        } else {
+            return newData;
+        }
+    }
+
+    public static HashMap<String, String> mapAB(HashMap<String, String> data) {
+
+        // created new hashmap and sets to input data
+        HashMap<String, String> newData = new HashMap<>();
+        newData.putAll(data);
+
+        // checks to see if both are present and returns that new map
+        if (newData.containsKey("a") && newData.containsKey("b")) {
+            newData.put("ab", (newData.get("a") + newData.get("b")));
+            return newData;
+        } else {
+            return newData;
+        }
+    }
+
+    public static HashMap<String, Integer> wordLen(ArrayList<String> data) {
+        HashMap<String, Integer> newData = new HashMap<>();
+        String wordToCount;
+        int wordSize;
+
+        for(String wordy : data) {
+            wordToCount = wordy;
+            wordSize = wordToCount.length();
+            newData.put(wordToCount, wordSize);
+        }
+        return newData;
+    }
+
+    public static HashMap<String, String> indexWords(ArrayList<String> data) {
+        HashMap<String, String> newData = new HashMap<>();
+        String wordToOrder;
+        String firstChar;
+
+        if(data.size() == 0) {
+            return newData;
+        } else {
+
+            for (int x = 0; x < data.size(); x++) {
+                wordToOrder = data.get(x);
+                firstChar = wordToOrder.substring(0, 1);
+                newData.put(firstChar, wordToOrder);
+            }
+            return newData;
+        }
+    }
 }
